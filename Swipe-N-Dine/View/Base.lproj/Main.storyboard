@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Ql-OF-dao">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nearby Restaurants-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Nearby Restaurants" id="BYZ-38-t0r" customClass="MainViewController" customModule="Swipe_N_Dine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brB-3K-lxu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ned-xg-QhI" userLabel="MapOverlay">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stP-fB-SFc" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="16" y="136" width="343" height="459"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="eKu-La-9lN">
+                                <rect key="frame" x="8" y="595" width="359" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHT-ML-PfP">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="52"/>
+                                        <state key="normal" image="ic_skip"/>
+                                        <connections>
+                                            <action selector="skipPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wkQ-X0-AaM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ov-MD-SbX" userLabel="Undo Button">
+                                        <rect key="frame" x="131" y="0.0" width="81.5" height="52"/>
+                                        <state key="normal" image="ic_undo"/>
+                                        <connections>
+                                            <action selector="undoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JTl-uj-lBA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fei-Tv-UDk">
+                                        <rect key="frame" x="212.5" y="0.0" width="146.5" height="52"/>
+                                        <state key="normal" image="ic_like"/>
+                                        <connections>
+                                            <action selector="likePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tPz-IY-hcx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="stP-fB-SFc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1e0-xT-Riw"/>
+                            <constraint firstItem="stP-fB-SFc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="72" id="1he-Cl-hBR"/>
+                            <constraint firstItem="Ned-xg-QhI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5B3-Im-avO"/>
+                            <constraint firstItem="Ned-xg-QhI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="75m-qC-jrH"/>
+                            <constraint firstItem="brB-3K-lxu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BU2-7j-kdL"/>
+                            <constraint firstItem="brB-3K-lxu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KIM-Rc-ySD"/>
+                            <constraint firstItem="Ned-xg-QhI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lrt-5i-Asz"/>
+                            <constraint firstItem="brB-3K-lxu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Qc1-dk-3AR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKu-La-9lN" secondAttribute="trailing" constant="8" id="SMA-ek-bFo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKu-La-9lN" secondAttribute="bottom" constant="20" id="SYN-mV-bnD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="stP-fB-SFc" secondAttribute="bottom" constant="72" id="SgM-Fk-oBN"/>
+                            <constraint firstItem="brB-3K-lxu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WOa-JK-SlH"/>
+                            <constraint firstItem="eKu-La-9lN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="cMN-tQ-8d9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="stP-fB-SFc" secondAttribute="trailing" constant="16" id="eB5-QD-Du1"/>
+                            <constraint firstItem="eKu-La-9lN" firstAttribute="top" secondItem="stP-fB-SFc" secondAttribute="bottom" id="eSb-Yy-aOM"/>
+                            <constraint firstItem="Ned-xg-QhI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vP1-06-3rd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Swipe-N-Dine" id="wfj-4I-5f6">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2Mp-RY-Kkv"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cardView" destination="stP-fB-SFc" id="XsQ-9c-50C"/>
+                        <outlet property="likeButton" destination="Fei-Tv-UDk" id="iie-SW-4sK"/>
+                        <outlet property="map" destination="brB-3K-lxu" id="3O5-VM-tII"/>
+                        <outlet property="mapOverlay" destination="Ned-xg-QhI" id="SqI-cg-e6x"/>
+                        <outlet property="skipButton" destination="rHT-ML-PfP" id="f4Z-ot-EYE"/>
+                        <outlet property="undoButton" destination="0ov-MD-SbX" id="Bx2-44-bT8"/>
+                        <segue destination="nKQ-MJ-bj0" kind="show" identifier="toFavorites" id="hGp-3a-Wvz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="6"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="5Jv-Ty-Bni">
+            <objects>
+                <tableViewController id="nKQ-MJ-bj0" customClass="FavoritesViewController" customModule="Swipe_N_Dine" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jmZ-Uq-NTS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="H7h-BD-nuD">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H7h-BD-nuD" id="hqu-wA-Xuk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nKQ-MJ-bj0" id="8bT-NT-Jd2"/>
+                            <outlet property="delegate" destination="nKQ-MJ-bj0" id="Dwc-De-n69"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="9mf-g7-NYM">
+                        <barButtonItem key="backBarButtonItem" systemItem="done" id="MII-av-Uyo"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A17-Wd-VX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1654" y="6"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mm6-Be-PIc">
+            <objects>
+                <navigationController id="0Ql-OF-dao" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2wx-5w-4y1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dDa-hB-u3G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O50-LP-F5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92" y="6"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_like" width="38" height="34"/>
+        <image name="ic_skip" width="34" height="34"/>
+        <image name="ic_undo" width="21" height="21"/>
+    </resources>
+</document>

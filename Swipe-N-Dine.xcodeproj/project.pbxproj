@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65238A9B2001CE1B0012C98B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65238A9A2001CE1B0012C98B /* FavoritesViewController.swift */; };
+		657D9A9E200023B60069623B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D9A9D200023B60069623B /* CardView.swift */; };
+		657D9AA020003C130069623B /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D9A9F20003C130069623B /* AsyncImageLoader.swift */; };
+		659DCA121FF8381A00C0B6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA111FF8381A00C0B6FB /* AppDelegate.swift */; };
+		659DCA141FF8381A00C0B6FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA131FF8381A00C0B6FB /* MainViewController.swift */; };
+		659DCA171FF8381A00C0B6FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659DCA151FF8381A00C0B6FB /* Main.storyboard */; };
+		659DCA1A1FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 659DCA181FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld */; };
+		659DCA1C1FF8381A00C0B6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 659DCA1B1FF8381A00C0B6FB /* Assets.xcassets */; };
+		659DCA1F1FF8381A00C0B6FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659DCA1D1FF8381A00C0B6FB /* LaunchScreen.storyboard */; };
+		65AC93CB1FFC069E007E6C01 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC93CA1FFC069E007E6C01 /* DataModel.swift */; };
+		65B6F59B200008D300A71BEC /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B6F59A200008D300A71BEC /* CardView.xib */; };
+		FCBC3980E6BEB2608D8D84D0 /* Pods_Swipe_N_Dine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF5DD308F1AC074B89EF365 /* Pods_Swipe_N_Dine.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		45C81DCEC331B0B495036676 /* Pods-Swipe-N-Dine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe-N-Dine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine.release.xcconfig"; sourceTree = "<group>"; };
+		65238A9A2001CE1B0012C98B /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		657D9A9D200023B60069623B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		657D9A9F20003C130069623B /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
+		659DCA0E1FF8381A00C0B6FB /* Swipe-N-Dine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe-N-Dine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		659DCA111FF8381A00C0B6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		659DCA131FF8381A00C0B6FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		659DCA161FF8381A00C0B6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		659DCA191FF8381A00C0B6FB /* Swipe2Dine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Swipe2Dine.xcdatamodel; sourceTree = "<group>"; };
+		659DCA1B1FF8381A00C0B6FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		659DCA1E1FF8381A00C0B6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		659DCA201FF8381A00C0B6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65AC93CA1FFC069E007E6C01 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		65B6F59A200008D300A71BEC /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		9AF5DD308F1AC074B89EF365 /* Pods_Swipe_N_Dine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipe_N_Dine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC9C67185FA2C7305F1774F5 /* Pods-Swipe-N-Dine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe-N-Dine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		659DCA0B1FF8381A00C0B6FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCBC3980E6BEB2608D8D84D0 /* Pods_Swipe_N_Dine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		650641E52001638D00D96943 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				659DCA131FF8381A00C0B6FB /* MainViewController.swift */,
+				657D9A9D200023B60069623B /* CardView.swift */,
+				65238A9A2001CE1B0012C98B /* FavoritesViewController.swift */,
+				659DCA111FF8381A00C0B6FB /* AppDelegate.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		659DCA051FF8381A00C0B6FB = {
+			isa = PBXGroup;
+			children = (
+				659DCA101FF8381A00C0B6FB /* Swipe-N-Dine */,
+				659DCA0F1FF8381A00C0B6FB /* Products */,
+				A0099179E0088BD3BAE2C2D5 /* Pods */,
+				77EAD2C18F33F33455888287 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		659DCA0F1FF8381A00C0B6FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				659DCA0E1FF8381A00C0B6FB /* Swipe-N-Dine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		659DCA101FF8381A00C0B6FB /* Swipe-N-Dine */ = {
+			isa = PBXGroup;
+			children = (
+				650641E52001638D00D96943 /* Controllers */,
+				65F867481FFC273F00CC2591 /* View */,
+				65AC93C91FFC0683007E6C01 /* Model */,
+				659DCA201FF8381A00C0B6FB /* Info.plist */,
+				659DCA181FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld */,
+			);
+			path = "Swipe-N-Dine";
+			sourceTree = "<group>";
+		};
+		65AC93C91FFC0683007E6C01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				657D9A9F20003C130069623B /* AsyncImageLoader.swift */,
+				65AC93CA1FFC069E007E6C01 /* DataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		65F867481FFC273F00CC2591 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				659DCA151FF8381A00C0B6FB /* Main.storyboard */,
+				65B6F59A200008D300A71BEC /* CardView.xib */,
+				659DCA1D1FF8381A00C0B6FB /* LaunchScreen.storyboard */,
+				659DCA1B1FF8381A00C0B6FB /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		77EAD2C18F33F33455888287 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AF5DD308F1AC074B89EF365 /* Pods_Swipe_N_Dine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0099179E0088BD3BAE2C2D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC9C67185FA2C7305F1774F5 /* Pods-Swipe-N-Dine.debug.xcconfig */,
+				45C81DCEC331B0B495036676 /* Pods-Swipe-N-Dine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		659DCA0D1FF8381A00C0B6FB /* Swipe-N-Dine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 659DCA231FF8381A00C0B6FB /* Build configuration list for PBXNativeTarget "Swipe-N-Dine" */;
+			buildPhases = (
+				415123860B455F7310B5BEAD /* [CP] Check Pods Manifest.lock */,
+				659DCA0A1FF8381A00C0B6FB /* Sources */,
+				659DCA0B1FF8381A00C0B6FB /* Frameworks */,
+				659DCA0C1FF8381A00C0B6FB /* Resources */,
+				31FB617AEBD074E9B071726F /* [CP] Embed Pods Frameworks */,
+				E96FC67C1CB961E453ACBDEC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Swipe-N-Dine";
+			productName = Swipe2Dine;
+			productReference = 659DCA0E1FF8381A00C0B6FB /* Swipe-N-Dine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		659DCA061FF8381A00C0B6FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Daniel Davalos";
+				TargetAttributes = {
+					659DCA0D1FF8381A00C0B6FB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 659DCA091FF8381A00C0B6FB /* Build configuration list for PBXProject "Swipe-N-Dine" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 659DCA051FF8381A00C0B6FB;
+			productRefGroup = 659DCA0F1FF8381A00C0B6FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				659DCA0D1FF8381A00C0B6FB /* Swipe-N-Dine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		659DCA0C1FF8381A00C0B6FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659DCA1F1FF8381A00C0B6FB /* LaunchScreen.storyboard in Resources */,
+				659DCA1C1FF8381A00C0B6FB /* Assets.xcassets in Resources */,
+				659DCA171FF8381A00C0B6FB /* Main.storyboard in Resources */,
+				65B6F59B200008D300A71BEC /* CardView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31FB617AEBD074E9B071726F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		415123860B455F7310B5BEAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swipe-N-Dine-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E96FC67C1CB961E453ACBDEC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		659DCA0A1FF8381A00C0B6FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65238A9B2001CE1B0012C98B /* FavoritesViewController.swift in Sources */,
+				659DCA141FF8381A00C0B6FB /* MainViewController.swift in Sources */,
+				65AC93CB1FFC069E007E6C01 /* DataModel.swift in Sources */,
+				659DCA121FF8381A00C0B6FB /* AppDelegate.swift in Sources */,
+				657D9AA020003C130069623B /* AsyncImageLoader.swift in Sources */,
+				657D9A9E200023B60069623B /* CardView.swift in Sources */,
+				659DCA1A1FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		659DCA151FF8381A00C0B6FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				659DCA161FF8381A00C0B6FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		659DCA1D1FF8381A00C0B6FB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				659DCA1E1FF8381A00C0B6FB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		659DCA211FF8381A00C0B6FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		659DCA221FF8381A00C0B6FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		659DCA241FF8381A00C0B6FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC9C67185FA2C7305F1774F5 /* Pods-Swipe-N-Dine.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C3XZN54755;
+				INFOPLIST_FILE = "Swipe-N-Dine/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.davalos.SwipeNDine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		659DCA251FF8381A00C0B6FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45C81DCEC331B0B495036676 /* Pods-Swipe-N-Dine.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = C3XZN54755;
+				INFOPLIST_FILE = "Swipe-N-Dine/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.davalos.SwipeNDine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		659DCA091FF8381A00C0B6FB /* Build configuration list for PBXProject "Swipe-N-Dine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659DCA211FF8381A00C0B6FB /* Debug */,
+				659DCA221FF8381A00C0B6FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		659DCA231FF8381A00C0B6FB /* Build configuration list for PBXNativeTarget "Swipe-N-Dine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659DCA241FF8381A00C0B6FB /* Debug */,
+				659DCA251FF8381A00C0B6FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		659DCA181FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				659DCA191FF8381A00C0B6FB /* Swipe2Dine.xcdatamodel */,
+			);
+			currentVersion = 659DCA191FF8381A00C0B6FB /* Swipe2Dine.xcdatamodel */;
+			path = SwipeNDine.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 659DCA061FF8381A00C0B6FB /* Project object */;
+}

@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.6.0)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
+  - CDYelpFusionKit (1.4.0):
+    - AlamofireObjectMapper (= 5.0.0)
+  - Koloda (4.3.1):
+    - pop (~> 1.0)
+  - ObjectMapper (3.1.0)
+  - pop (1.0.10)
+  - SVProgressHUD (2.2.2)
+
+DEPENDENCIES:
+  - CDYelpFusionKit
+  - Koloda
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  CDYelpFusionKit: 0bcdd0df3fb08d4c4f4314315b727999953e7542
+  Koloda: 0d39b2aa188ccd1fac48d752acaf9802e683c625
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+
+PODFILE CHECKSUM: ee087bdf1297f563a31068a1fa87705c1b4e1ed9
+
+COCOAPODS: 1.3.1
