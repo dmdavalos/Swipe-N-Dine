@@ -15,7 +15,7 @@ An efficient restaurant picker with a Tinder-like card system.
 
 ## Roadmap
 * Create filters for price, categories and other critieria.
-* Allow the user to chose and other location.
+* Allow the user to choose another location.
 * Make the Favorites list look nicer.
 
 ## License
