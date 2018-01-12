@@ -17,7 +17,7 @@ class DataModel {
     var delegate: DataModelDelegate?
     
     // MARK: Important! Add your Yelp API keys here!
-    let yelpAPIClient = CDYelpAPIClient(clientId: "", clientSecret: "")
+    let yelpAPIClient = CDYelpAPIClient(clientId: "j2YyO_Ywl53ddNPTRfYucQ", clientSecret: "EJFTG7HB96fbdGkT0QPQNOMwF87A8ystzupWoieBD3PavByYH2Om9cLfJmOUxKID")
 
     func searchBusinesses(lat: Double, lon: Double) {
         print("Querying Yelp for restaurants near \(lat),\(lon)")

@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
     let dataModel = DataModel()
     var restaurants: [CDYelpBusiness] = []
     var shortList: [CDYelpBusiness] = []
-    var locationManager = CLLocationManager()
+    var location: Location = Location()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +44,7 @@ class MainViewController: UIViewController {
         SVProgressHUD.show(withStatus: "Getting nearest restaurants...")
         
         dataModel.delegate = self
-        
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        location.delegate = self
         
         map.userTrackingMode = .follow
         
@@ -59,30 +56,40 @@ class MainViewController: UIViewController {
     }
 }
 
+// Location delegate methods
+extension MainViewController: LocationDelegate {
+    func didReceiveLocation(lat: Double, lon: Double) {
+        dataModel.searchBusinesses(lat: lat, lon: lon)
+    }
+    
+    func didReceiveError(error: Error) {
+        SVProgressHUD.showError(withStatus: error.localizedDescription)
+    }
+}
+
 // Navigation Bar configuration
 extension MainViewController {
     func initializeNavBar() {
         let heartImage = UIImage(named: "heart")
-        let favoritesButton = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(shortListButtonPressed))
+        let favoritesButton = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(favoritesButtonPressed))
         self.navigationController?.navigationBar.topItem?.setRightBarButton(favoritesButton, animated: true)
         
-        // To be added in a future release.
-//        let infoImage = UIImage(named: "info")
-//        let infoButton = UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(infoButtonPressed))
-//        self.navigationController?.navigationBar.topItem?.setLeftBarButton(infoButton, animated: true)
+        let refreshImage = UIImage(named: "syncronize")
+        let refreshButton = UIBarButtonItem(image: refreshImage, style: .plain, target: self, action: #selector(refreshButtonPressed))
+        self.navigationController?.navigationBar.topItem?.setLeftBarButton(refreshButton, animated: true)
         
         self.navigationController?.navigationBar.barTintColor = UIColor.red
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
     }
     
-    @objc func shortListButtonPressed() {
+    @objc func favoritesButtonPressed() {
         self.performSegue(withIdentifier: "toFavorites", sender: self)
     }
     
-    @objc func infoButtonPressed() {
-        print("Info button pressed!")
-        self.performSegue(withIdentifier: "toInfo", sender: self)
+    @objc func refreshButtonPressed() {
+        location.getLocation()
+        SVProgressHUD.show(withStatus: "Refreshing...")
     }
 }
 
@@ -98,25 +105,6 @@ extension MainViewController: DataModelDelegate {
         }
         restaurants = data
         cardView.reloadData()
-    }
-}
-
-// Core Location delegate methods
-extension MainViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Location: \(String(describing: locations.first!.coordinate.latitude)), \(String(describing: locations.first?.coordinate.longitude))")
-        SVProgressHUD.dismiss()
-        self.dataModel.searchBusinesses(lat: locations.first!.coordinate.latitude, lon: locations.first!.coordinate.longitude)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error getting location! \(error.localizedDescription)")
         SVProgressHUD.dismiss()
     }
 }
