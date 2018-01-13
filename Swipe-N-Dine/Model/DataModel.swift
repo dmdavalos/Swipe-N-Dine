@@ -7,41 +7,28 @@
 //
 
 import Foundation
-import CDYelpFusionKit
+import Alamofire
+import SwiftyJSON
 
-protocol DataModelDelegate {
-    func receievedData(data: [CDYelpBusiness])
+protocol YelpFetcherDelegate {
+    func didReceiveRestaurants(result: JSON)
 }
 
-class DataModel {
-    var delegate: DataModelDelegate?
+class YelpAPIFetcher {
+    private let BASE_URL: String = "https://api.yelp.com/v3/businesses/search?"
     
-    // MARK: Important! Add your Yelp API keys here!
-    let yelpAPIClient = CDYelpAPIClient(clientId: "j2YyO_Ywl53ddNPTRfYucQ", clientSecret: "EJFTG7HB96fbdGkT0QPQNOMwF87A8ystzupWoieBD3PavByYH2Om9cLfJmOUxKID")
-
-    func searchBusinesses(lat: Double, lon: Double) {
-        print("Querying Yelp for restaurants near \(lat),\(lon)")
-        yelpAPIClient.searchBusinesses(byTerm: nil,
-                                       location: nil,
-                                       latitude: lat,
-                                       longitude: lon,
-                                       radius: 4000,
-                                       categories: [.restaurants, .food, .fastFood],
-                                       locale: nil,
-                                       limit: 50,
-                                       offset: nil,
-                                       sortBy: nil,
-                                       priceTiers: nil,
-                                       openNow: true,
-                                       openAt: nil,
-                                       attributes: nil)
-        { (response) in
-            if response?.businesses?.count == 0 {
-                print("No restaurants found!")
-            }
-            else {
-                print("\(response!.total!) businesses found!")
-                self.delegate?.receievedData(data: response!.businesses!)
+    // MARK: IMPORTANT! Add your Yelp API key here!
+    private let HEADERS: HTTPHeaders = ["Authorization":"Bearer YOUR_API_KEY"]
+    
+    var delegate: YelpFetcherDelegate?
+    
+    public func getRestaurants(lat: Double, lon: Double) {
+        Alamofire.request(BASE_URL + "latitude=\(lat)&longitude=\(lon)", headers: HEADERS).responseJSON { (response) in
+            if response.result.isSuccess {
+                print("Yelp API fetching successful!")
+                self.delegate?.didReceiveRestaurants(result: JSON(response.result.value!))
+            } else {
+                print("Error fetching restaurants! \(response.error.debugDescription)")
             }
         }
     }

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brB-3K-lxu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brB-3K-lxu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ned-xg-QhI" userLabel="MapOverlay">
@@ -82,7 +82,7 @@
                     <connections>
                         <outlet property="cardView" destination="stP-fB-SFc" id="XsQ-9c-50C"/>
                         <outlet property="likeButton" destination="Fei-Tv-UDk" id="iie-SW-4sK"/>
-                        <outlet property="map" destination="brB-3K-lxu" id="3O5-VM-tII"/>
+                        <outlet property="map" destination="brB-3K-lxu" id="82J-q0-QTS"/>
                         <outlet property="mapOverlay" destination="Ned-xg-QhI" id="SqI-cg-e6x"/>
                         <outlet property="skipButton" destination="rHT-ML-PfP" id="f4Z-ot-EYE"/>
                         <outlet property="undoButton" destination="0ov-MD-SbX" id="Bx2-44-bT8"/>

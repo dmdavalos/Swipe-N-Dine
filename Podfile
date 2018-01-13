@@ -8,5 +8,6 @@ target 'Swipe-N-Dine' do
 # Pods for Swipe2Dine
 pod 'Koloda'
 pod 'SVProgressHUD'
-pod 'CDYelpFusionKit'
+pod 'Alamofire'
+pod 'SwiftyJSON'
 end

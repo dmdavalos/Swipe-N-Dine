@@ -8,7 +8,6 @@
 
 import Foundation
 import Koloda
-import CDYelpFusionKit
 
 class CardView: UIView {
     
@@ -19,7 +18,6 @@ class CardView: UIView {
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var topLabel: UIView!
-    @IBOutlet var yelpLogo: UIImageView!
     @IBOutlet var yelpRating: UIImageView!
     
     override func awakeFromNib() {
@@ -31,8 +29,6 @@ class CardView: UIView {
         addressLabel.textColor = UIColor.white
         typeLabel.textColor = UIColor.white
         distanceLabel.textColor = UIColor.white
-
-        yelpLogo.image = UIImage.yelpLogo()
     }
     
 }

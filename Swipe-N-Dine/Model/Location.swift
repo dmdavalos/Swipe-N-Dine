@@ -12,6 +12,7 @@ import CoreLocation
 protocol LocationDelegate {
     func didReceiveLocation(lat: Double, lon: Double)
     func didReceiveError(error: Error)
+    func locationNotAuthorized()
 }
 
 class Location: NSObject, CLLocationManagerDelegate {
@@ -41,6 +42,9 @@ class Location: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             locationManager?.requestLocation()
+        }
+        else if status == .denied {
+            delegate?.locationNotAuthorized()
         }
     }
     

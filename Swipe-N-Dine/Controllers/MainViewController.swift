@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
 import Koloda
 import SVProgressHUD
 import MapKit
-import CDYelpFusionKit
+import SwiftyJSON
 
 class MainViewController: UIViewController {
     @IBAction func likePressed(_ sender: Any) {
@@ -31,10 +30,11 @@ class MainViewController: UIViewController {
     @IBOutlet var cardView: KolodaView!
     @IBOutlet var mapOverlay: UIImageView!
     
-    let dataModel = DataModel()
-    var restaurants: [CDYelpBusiness] = []
-    var shortList: [CDYelpBusiness] = []
+    var restaurants: JSON = []
     var location: Location = Location()
+    var yelpFetcher = YelpAPIFetcher()
+    var saveData = SaveData()
+    var favoritesList: [Favorites] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,6 @@ class MainViewController: UIViewController {
         
         SVProgressHUD.show(withStatus: "Getting nearest restaurants...")
         
-        dataModel.delegate = self
         location.delegate = self
         
         map.userTrackingMode = .follow
@@ -53,13 +52,23 @@ class MainViewController: UIViewController {
         cardView.layer.cornerRadius = 10
         cardView.isHidden = true
         
+        yelpFetcher.delegate = self
+        
+        saveData.loadData()
     }
 }
 
 // Location delegate methods
 extension MainViewController: LocationDelegate {
+    func locationNotAuthorized() {
+        SVProgressHUD.showError(withStatus: "Location not authorized! Please check your settings app!")
+        UIView.animate(withDuration: 1) {
+            self.mapOverlay.alpha = 0.65
+        }
+    }
+    
     func didReceiveLocation(lat: Double, lon: Double) {
-        dataModel.searchBusinesses(lat: lat, lon: lon)
+        yelpFetcher.getRestaurants(lat: lat, lon: lon)
     }
     
     func didReceiveError(error: Error) {
@@ -70,6 +79,8 @@ extension MainViewController: LocationDelegate {
 // Navigation Bar configuration
 extension MainViewController {
     func initializeNavBar() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         let heartImage = UIImage(named: "heart")
         let favoritesButton = UIBarButtonItem(image: heartImage, style: .plain, target: self, action: #selector(favoritesButtonPressed))
         self.navigationController?.navigationBar.topItem?.setRightBarButton(favoritesButton, animated: true)
@@ -93,9 +104,10 @@ extension MainViewController {
     }
 }
 
-// Custom DataModel delegate methods
-extension MainViewController: DataModelDelegate {
-    func receievedData(data: [CDYelpBusiness]) {
+// Custom YelpFetcher delegate methods
+extension MainViewController: YelpFetcherDelegate {
+    func didReceiveRestaurants(result: JSON) {
+        restaurants = result
         UIView.animate(withDuration: 1) {
             self.mapOverlay.alpha = 0.65
             self.cardView.isHidden = false
@@ -103,7 +115,6 @@ extension MainViewController: DataModelDelegate {
             self.likeButton.alpha = 1
             self.undoButton.alpha = 1
         }
-        restaurants = data
         cardView.reloadData()
         SVProgressHUD.dismiss()
     }
@@ -114,58 +125,58 @@ extension MainViewController: KolodaViewDelegate, KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let view = Bundle.main.loadNibNamed("CardView", owner: self, options: nil)![0] as! CardView
 
-        view.nameLabel.text = restaurants[index].name
+        view.nameLabel.text = restaurants["businesses"][index]["name"].stringValue
         
-        view.image.imageFromServerURL(urlString: restaurants[index].imageUrl!.absoluteString)
+        view.image.imageFromServerURL(urlString: restaurants["businesses"][index]["image_url"].stringValue)
         
-        if restaurants[index].location?.displayAddress?.count == 2 {
-            view.addressLabel.text = "\(restaurants[index].location!.displayAddress![0]), \(restaurants[index].location!.displayAddress![1])"
-        }
-        else {
+        if restaurants["businesses"][index]["location"]["display_address"].isEmpty {
             view.addressLabel.text = ""
         }
-        
-        if let typeExists = restaurants[index].categories {
-            view.typeLabel.text = typeExists[0].title
-        }
         else {
+            view.addressLabel.text = "\(restaurants["businesses"][index]["location"]["display_address"][0].stringValue), \(restaurants["businesses"][index]["location"]["display_address"][1].stringValue)"
+        }
+
+        if restaurants["businesses"][index]["categories"][0].isEmpty {
             view.typeLabel.text = ""
         }
-        if let distanceExists = restaurants[index].distance {
+        else {
+            view.typeLabel.text = restaurants["businesses"][index]["categories"][0]["title"].stringValue
+        }
+        
+        if restaurants["businesses"][index]["distance"] == 0 {
+            view.distanceLabel.text = ""
+        }
+        else {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             formatter.maximumFractionDigits = 2
-            let inMiles = formatter.string(from: distanceExists/1609.344 as NSNumber)! // Convert from meters to miles
+            let inMiles = formatter.string(from: restaurants["businesses"][index]["distance"].doubleValue/1609.344 as NSNumber)! // Convert from meters to miles
             
             view.distanceLabel.text = "\(inMiles) mi"
         }
-        else {
-            view.distanceLabel.text = ""
-        }
-        
-        print("Rating: \(restaurants[index].rating!)")
-        if let ratingExists = restaurants[index].rating {
+
+        if let ratingExists = restaurants["businesses"][index]["rating"].double {
             switch ratingExists {
             case 5:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .five, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_five_large")
             case 4.5:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .fourHalf, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_four_half_large")
             case 4:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .four, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_four_large")
             case 3.5:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .threeHalf, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_three_half_large")
             case 3:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .three, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_three_large")
             case 2.5:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .twoHalf, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_two_half_large")
             case 2:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .two, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_two_large")
             case 1.5:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .oneHalf, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_one_half_large")
             case 1:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .one, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_one_large")
             default:
-                view.yelpRating.image = UIImage.yelpStars(numberOfStars: .zero, forSize: .large)
+                view.yelpRating.image = UIImage(named: "yelp_stars_zero_large")
             }
         }
         
@@ -173,22 +184,22 @@ extension MainViewController: KolodaViewDelegate, KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        let actionSheet = UIAlertController(title: restaurants[index].name, message: "Select an option:", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: restaurants["businesses"][index]["name"].stringValue, message: "Select an option:", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Call", style: .default, handler: { (action) in
             print("Calling business...")
-            let url = URL(string: "tel:\(self.restaurants[index].phone!)")
+            let url = URL(string: "tel:\(self.restaurants["business"][index]["phone"])")
             print(url!)
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Directions", style: .default, handler: { (action) in
             print("Getting directions...")
-            let addr = "\(self.restaurants[index].location!.displayAddress![0]), \(self.restaurants[index].location!.displayAddress![1])".replacingOccurrences(of: " ", with: "+")
+            let addr = ("\(self.restaurants["businesses"][index]["location"]["display_address"][0].stringValue), \(self.restaurants["businesses"][index]["location"]["display_address"][1].stringValue)").replacingOccurrences(of: " ", with: "+")
             let url = URL(string: "http://maps.apple.com/?daddr=\(addr)")
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "View on Yelp", style: .default, handler: { (action) in
             print("Opening in Yelp...")
-            if let url = self.restaurants[index].url {
+            if let url = self.restaurants["businesses"][index]["url"].url {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
 
@@ -199,36 +210,26 @@ extension MainViewController: KolodaViewDelegate, KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         if direction == .right {
-            if self.shortList.contains(where: { (business) -> Bool in
-                if business.id == restaurants[index].id {
+            if favoritesList.contains(where: { (item) -> Bool in
+                if item.id == restaurants["businesses"][index]["name"].stringValue {
                     return true
-                }
-                else {
+                } else {
                     return false
-                }}) {
-                print("Resaurant found. Skipping.")
-            }
-            else {
-                print("Adding to shortlist.")
-                self.shortList.append(restaurants[index])
-                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-                let newItem = Favorites(context: context)
-                newItem.id = restaurants[index].id
-                newItem.name = restaurants[index].name
-                newItem.address1 = restaurants[index].location?.displayAddress![0]
-                newItem.address2 = restaurants[index].location?.displayAddress![1]
-                newItem.imageUrl = restaurants[index].imageUrl?.absoluteString
-                newItem.phone = restaurants[index].phone
-                newItem.price = restaurants[index].price
-                newItem.rating = restaurants[index].rating!
-                newItem.url = restaurants[index].url?.absoluteString
-                
-                do {
-                    try context.save()
-                } catch {
-                    print("Error saving restaurant! \(error)")
                 }
+            }) {
+                print("Item found in SaveData! Skipping...")
+            } else {
+                print("Adding item to SaveData...")
+                let newItem = Favorites(context: saveData.context)
+                newItem.id = restaurants["businesses"][index]["id"].stringValue
+                newItem.name = restaurants["businesses"][index]["name"].stringValue
+                newItem.address1 = restaurants["businesses"][index]["location"]["display_address"][0].stringValue
+                newItem.address2 = restaurants["businesses"][index]["location"]["display_address"][1].stringValue
+                newItem.imageUrl = restaurants["businesses"][index]["image_url"].stringValue
+                newItem.phone = restaurants["businesses"][index]["phone"].stringValue
+                newItem.rating = restaurants["businesses"][index]["rating"].doubleValue
+                newItem.url = restaurants["businesses"][index]["location"]["url"].stringValue
+                saveData.saveData()
             }
         }
     }
@@ -239,10 +240,20 @@ extension MainViewController: KolodaViewDelegate, KolodaViewDataSource {
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
-        return restaurants.count
+        return restaurants["businesses"].count
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
         return DragSpeed.default
+    }
+}
+
+extension MainViewController: SaveDataDelegate {
+    func didLoadData(data: [Favorites]) {
+        favoritesList = data
+    }
+    
+    func didReceieveError(error: Error) {
+        SVProgressHUD.showError(withStatus: error.localizedDescription)
     }
 }

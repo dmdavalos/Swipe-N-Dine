@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65238A9B2001CE1B0012C98B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65238A9A2001CE1B0012C98B /* FavoritesViewController.swift */; };
+		655134E72009A37C00A9AF8C /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655134E62009A37C00A9AF8C /* SavedData.swift */; };
 		657D9A9E200023B60069623B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D9A9D200023B60069623B /* CardView.swift */; };
 		657D9AA020003C130069623B /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657D9A9F20003C130069623B /* AsyncImageLoader.swift */; };
 		6581C0B120089A790040CA51 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581C0B020089A790040CA51 /* Location.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		45C81DCEC331B0B495036676 /* Pods-Swipe-N-Dine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe-N-Dine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine.release.xcconfig"; sourceTree = "<group>"; };
 		65238A9A2001CE1B0012C98B /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		655134E62009A37C00A9AF8C /* SavedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		657D9A9D200023B60069623B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		657D9A9F20003C130069623B /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 		6581C0B020089A790040CA51 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				657D9A9F20003C130069623B /* AsyncImageLoader.swift */,
 				6581C0B020089A790040CA51 /* Location.swift */,
 				65AC93CA1FFC069E007E6C01 /* DataModel.swift */,
+				655134E62009A37C00A9AF8C /* SavedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,21 +216,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Swipe-N-Dine/Pods-Swipe-N-Dine-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +282,7 @@
 				657D9AA020003C130069623B /* AsyncImageLoader.swift in Sources */,
 				657D9A9E200023B60069623B /* CardView.swift in Sources */,
 				659DCA1A1FF8381A00C0B6FB /* SwipeNDine.xcdatamodeld in Sources */,
+				655134E72009A37C00A9AF8C /* SavedData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3XZN54755;
 				INFOPLIST_FILE = "Swipe-N-Dine/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.davalos.SwipeNDine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3XZN54755;
 				INFOPLIST_FILE = "Swipe-N-Dine/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.davalos.SwipeNDine;
 				PRODUCT_NAME = "$(TARGET_NAME)";

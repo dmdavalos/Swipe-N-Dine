@@ -85,7 +85,7 @@
                             <rect key="frame" x="8" y="100" width="104" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="burger" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-5h-Sxd">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yelp_logo" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-5h-Sxd">
                             <rect key="frame" x="112" y="92" width="40" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -128,13 +128,12 @@
                 <outlet property="nameLabel" destination="UmH-QU-Y8B" id="PPN-hl-2fg"/>
                 <outlet property="topLabel" destination="UzO-E1-ws5" id="upn-Au-HgO"/>
                 <outlet property="typeLabel" destination="E9k-Je-3MI" id="DC9-ic-Zv6"/>
-                <outlet property="yelpLogo" destination="LpM-5h-Sxd" id="CgC-E9-YKi"/>
                 <outlet property="yelpRating" destination="PIb-kE-IM8" id="Zif-9B-sfo"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
     <resources>
-        <image name="burger" width="1500" height="1123"/>
+        <image name="yelp_logo" width="333" height="213"/>
     </resources>
 </document>
