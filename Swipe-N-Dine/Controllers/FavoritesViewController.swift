@@ -51,7 +51,7 @@ extension FavoritesViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             saveData.context.delete(favoritesList[indexPath.row])
             favoritesList.remove(at: indexPath.row)
@@ -66,22 +66,27 @@ extension FavoritesViewController {
             print("Calling business...")
             let url = URL(string: "tel:\(self.favoritesList[indexPath.row].phone!)")
             print(url!)
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Directions", style: .default, handler: { (action) in
             print("Getting directions...")
             let addr = "\(self.favoritesList[indexPath.row].address1!), \(self.favoritesList[indexPath.row].address2!)".replacingOccurrences(of: " ", with: "+")
             let url = URL(string: "http://maps.apple.com/?daddr=\(addr)")
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "View on Yelp", style: .default, handler: { (action) in
             print("Opening in Yelp...")
             if let url = URL(string: self.favoritesList[indexPath.row].url!) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
             
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

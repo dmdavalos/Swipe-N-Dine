@@ -91,7 +91,7 @@ extension MainViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor.red
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     }
     
     @objc func favoritesButtonPressed() {
@@ -189,18 +189,18 @@ extension MainViewController: KolodaViewDelegate, KolodaViewDataSource {
             print("Calling business...")
             let url = URL(string: "tel:\(self.restaurants["business"][index]["phone"])")
             print(url!)
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "Directions", style: .default, handler: { (action) in
             print("Getting directions...")
             let addr = ("\(self.restaurants["businesses"][index]["location"]["display_address"][0].stringValue), \(self.restaurants["businesses"][index]["location"]["display_address"][1].stringValue)").replacingOccurrences(of: " ", with: "+")
             let url = URL(string: "http://maps.apple.com/?daddr=\(addr)")
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }))
         actionSheet.addAction(UIAlertAction(title: "View on Yelp", style: .default, handler: { (action) in
             print("Opening in Yelp...")
             if let url = self.restaurants["businesses"][index]["url"].url {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
 
         }))
@@ -256,4 +256,9 @@ extension MainViewController: SaveDataDelegate {
     func didReceieveError(error: Error) {
         SVProgressHUD.showError(withStatus: error.localizedDescription)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
