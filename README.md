@@ -1,7 +1,7 @@
 # Swipe-N-Dine
 ![License](https://img.shields.io/cocoapods/l/Whisper.svg?style=flat)
 ![Platform](https://img.shields.io/badge/platform-ios-blue.svg)
-![Swift](https://img.shields.io/badge/%20in-swift%204.0-orange.svg)
+![Swift](https://img.shields.io/badge/%20in-swift%205.0-orange.svg)
 
 ## Description
 An efficient restaurant picker with a Tinder-like card system. Try it now on your web browser via [Appetize.io](https://appetize.io/app/r7xhe8a9fb37nk6gfpet03132c?device=iphone8&scale=75&orientation=portrait&osVersion=11.1&deviceColor=black)!
